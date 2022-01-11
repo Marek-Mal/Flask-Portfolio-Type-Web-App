@@ -1,0 +1,33 @@
+.art {
+    margin-left: 25%;
+    margin-right: 25%;
+    font-size: 20px;
+}
+
+button {
+    color: rgb(76, 70, 80) !important;
+}
+
+button:hover {
+    color: rgb(24, 0, 133) !important;
+}
+
+ul {
+    justify-content: center;
+}
+
+.theact {
+    color: rgb(76, 70, 80) !important;
+}
+
+.footer {
+    margin-top: 100px !important;
+}
+
+@media only screen and (min-width: 2000px) {
+      
+    .footer {
+        position: absolute !important;
+        bottom:0px !important;
+    }
+}

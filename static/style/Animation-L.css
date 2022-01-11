@@ -1,0 +1,19 @@
+.Title {
+    overflow: hidden; 
+    border-right: .15em solid whitesmoke; 
+    white-space: nowrap;
+    letter-spacing: 5px; 
+    animation:
+      typing 1s steps(50, end),
+      blink-caret .70s step-end infinite;
+  }
+
+@keyframes typing {
+    from { width: 0}
+    to { width: 39.5%}
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: whitesmoke }
+  }

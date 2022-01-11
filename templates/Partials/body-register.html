@@ -1,0 +1,46 @@
+<article class="Artykol">
+    <form method="POST">
+      <div class="col-md-6">
+          <b>{{ form.name.label(class_="form-label") }}</b>
+          {{ form.name(class_="form-control") }}
+          {% for e in form.name.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <b>{{ form.email.label(class_="form-label") }}</b>
+          {{ form.email(class_="form-control") }}
+          {% for e in form.email.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <b>{{ form.password.label(class_="form-label") }}</b>
+          {{ form.password(class_="form-control") }}
+          {% for e in form.password.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <b>{{ form.password2.label(class_="form-label") }}</b>
+          {{ form.password2(class_="form-control") }}
+          {% for e in form.password2.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <br>
+         <div class="col-12">
+         </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Zarejejstruj</button>
+        </div>
+    </form>
+</article>

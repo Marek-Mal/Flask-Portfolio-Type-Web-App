@@ -1,0 +1,32 @@
+<article class="Artykol">
+    <form method="POST">
+      {{ form.csrf_token }}
+      <div class="col-md-6">
+          <b>{{ form.name.label(class_="form-label") }}</b>
+          {{ form.name(class_="form-control") }}
+          {% for e in form.name.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <b>{{ form.password.label(class_="form-label") }}</b>
+          {{ form.password(class_="form-control") }}
+          {% for e in form.password.errors %}
+              <div class="my-Alert-Failed">
+                 {{e}}
+              </div>
+          {% endfor %}
+        </div><br>
+        <div class="col-md-6">
+          {{ form.remember(class="form-check-input", type="checkbox") }}
+          {{ form.remember.label(lass="form-check-label") }}
+        </div>
+        <br>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Zaloguj</button>
+        </div><br> 
+        <p>Nie masz konta? <b><a href="{{ url_for('register') }}">Zarejejstruj Się</a></b></p>
+    </form>
+</article>

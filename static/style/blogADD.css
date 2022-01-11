@@ -1,0 +1,23 @@
+p {
+    margin-top: 20px !important;
+}
+
+.footer {
+    margin-top: 70px !important;
+    height: 10em !important;
+}
+
+.btn {
+    background-image: linear-gradient(to bottom right, rgb(72, 13, 121),rgb(86, 16, 143)) !important;
+
+}
+
+textarea {resize: none}
+
+a {
+    text-decoration: none
+}
+
+a :hover {
+    color: rgb(24, 0, 133) !important;
+}

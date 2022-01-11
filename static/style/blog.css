@@ -1,0 +1,16 @@
+.footer {
+    margin-top: 50px !important;
+    height: 10em !important;
+}
+
+a {
+    text-decoration: none
+}
+
+a :hover {
+    color: rgb(24, 0, 133) !important;
+}
+
+p {
+    margin-bottom: 40px;
+}

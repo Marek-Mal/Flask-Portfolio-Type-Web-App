@@ -1,0 +1,58 @@
+<article class="Artykol">
+    <form class="row g-3" method="post" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+        <div class="col-md-6">
+          <label for="inputUser" class="form-label"><b> {{ form.FirstName.label }} </b></label>
+          {{ form.FirstName(class_="form-control", id_="inputUser") }}
+          {% for e in form.FirstName.errors %}
+              <div class="my-Alert-Failed">
+                {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6">
+          <label for="inputSecName" class="form-label"><b>{{ form.SecName.label }}</b></label>
+          {{ form.SecName(class_="form-control", id_="inputSecName") }}
+          {% for e in form.SecName.errors %}
+              <div class="my-Alert-Failed">
+                {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          <label for="inputSecName" class="form-label"><b>{{ form.Topic.label }}</b></label>
+          {{ form.Topic(class_="form-control", id_="inputTopic") }}
+          {% for e in form.Topic.errors %}
+              <div class="my-Alert-Failed">
+                {{e}}
+              </div>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"><b>{{ form.message.label }}</b></label>
+            {{ form.message(class_="form-control", id_="exampleFormControlTextarea1", rows_="4") }}
+            {% for e in form.message.errors %}
+              <div class="my-Alert-Failed">
+                {{e}}
+              </div>
+          {% endfor %}
+          </div><br>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            {{ form.checkbox(class_="form-check-input", id_="gridCheck") }}
+            <label class="form-check-label" for="gridCheck">
+              {{ form.checkbox.label }}
+            </label>
+            {% for e in form.checkbox.errors %}
+              <div class="my-Alert-Failed">
+                {{e}}
+                </div>
+                {% endfor %}
+          </div>
+        </div>
+        <div class="col-12">
+          <input type="submit" class="btn btn-primary" value="Wyślij">
+        </div>
+    </form>
+</article>

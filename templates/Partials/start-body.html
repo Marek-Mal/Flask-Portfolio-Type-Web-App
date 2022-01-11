@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ Page_Title }}</title>
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    {% if Page_Title == "Strona Główna" or Page_Title == "Doświadczenie" or Page_Title == "Register"%}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-M-D-R.css') }}">
+    {% endif %}
+    {% if Page_Title == "Kontakt" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-K.css') }}">
+    {% endif %}
+    {% if Page_Title == "Login" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-L.css') }}">
+    {% endif %}
+    {% if Page_Title == "Oceny" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-N.css') }}">
+    {% endif %}
+    {% if Page_Title == "Blog" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-B.css') }}">
+    {% endif %}
+    {% if Page_Title == "Dodaj Post" %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Animation-Sent.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/stel.css') }}">
+    {% endif %}
+    {% if Page_Title == 'Kontakt' %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/styl4.css') }}">
+    {% endif %}
+    {% if Page_Title == 'Doświadczenie' %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/styl3.css') }}">
+    {% endif %}
+    {% if Page_Title == 'Blog'%}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/blog.css') }}">
+    {% endif %}
+    {% if Page_Title == 'Szczegóły'%}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/Szczegoly.css') }}">
+    {% endif %}
+    {% if Page_Title == 'Dodaj Post'%}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/blogADD.css') }}">
+    {% endif %}
+        <link rel="stylesheet" href="/static/style/style.css">
+    {% if Page_Title == 'Register' or Page_Title == 'Login' %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style/styl5.css') }}">
+    {% endif %}
+    
+    <script src="{{ url_for('static', filename='Scripts/Type.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+</head>
+<body>
+    <header class="header">
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> Zalogowano Jako: 
+                {% if current_user.name| length > 1 %}
+                    {{current_user.name}}
+                {% else %}
+                    Gość 
+                {% endif %}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link {{ 'my-link' if Page_Title == 'Strona Główna' }}" aria-current="page" href="{{ url_for('index') }}">Strona Główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'my-link' if Page_Title == 'Doświadczenie' }}" href="{{ url_for('xp') }}">Doświadczenie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'my-link' if Page_Title == 'Kontakt' }}" href="{{ url_for('contact') }}">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ 'my-link' if Page_Title == 'Blog' }}" href="{{ url_for('Blog') }}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    {% if current_user.name == 'admin' %}
+                        <a class="nav-link" href="{{ url_for('Blogadd') }}">Dodaj Post</a>
+                    {% endif %}
+                </li>
+                    {% if current_user.name| length < 1 %}
+                        <a class="nav-link {{ 'my-link' if Page_Title == 'Login' }}" href="{{ url_for('login') }}">Zaloguj</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if current_user.name| length < 1 %}
+                         <a class="nav-link {{ 'my-link' if Page_Title == 'Register' }}" href="{{ url_for('register') }}">Zarejejstruj</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if current_user.name| length > 1 %}
+                        <a class="nav-link" href="{{ url_for('logout') }}">Wyloguj Się</a>
+                    {% endif %}
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% if get_flashed_messages() %}
+    {% if Page_Title == 'Login' or Page_Title == 'Register' %}
+    <div style="clear:both">
+        {% for message in get_flashed_messages() %}
+            <ul class='my-Alert-warn'>
+                <b>{{ message }}</b>
+            </ul>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="clear:both">
+        {% for message in get_flashed_messages() %}
+            <ul class='my-Alert-success'>
+                <b>{{ message }}</b>
+            </ul>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endif %}
+
+{% if not get_flashed_messages() %}
+    <div style="height: 20px; margin-top:90px; background-color:white;"></div>
+{% endif %}
+
+<div>
+    <div class="kontener">
+        <h1 class="Title" style="font-size: 90px">{{ maindiv }}</h1>
+    </div>
+</div>

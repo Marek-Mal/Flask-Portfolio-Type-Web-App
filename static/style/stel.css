@@ -1,0 +1,7 @@
+@media only screen and (min-width: 2400px) {
+    
+    .footer {
+        position: absolute !important;
+        bottom:0px !important;
+    }
+}
